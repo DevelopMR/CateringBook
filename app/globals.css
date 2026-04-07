@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f4ed;
+  --foreground: #1f2937;
+  --card: #fffdf8;
+  --border: #ddd6c8;
+  --muted: #6b7280;
+  --accent: #9a3412;
+  --accent-soft: #ffedd5;
+}
+
+body {
+  background: linear-gradient(180deg, #f7f4ed 0%, #fffdf8 100%);
+  color: var(--foreground);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

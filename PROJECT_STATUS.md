@@ -7,8 +7,11 @@
 - Status date: 2026-04-07
 
 ## Current Phase
-### Phase 1 complete
-The project has a working Next.js App Router scaffold with a shared layout, placeholder public and admin routes, Tailwind-based styling, and documented environment variable structure.
+### Phase 2 complete
+Phase 1 has been reviewed and accepted, and the Phase 2 data foundation is now in place in-repo with Supabase CLI setup, schema migrations, seed data, and setup documentation.
+
+## Phase 1 Wrap-Up
+Phase 1 is complete and confirmed. The project has a working Next.js App Router scaffold with a shared layout, placeholder public and admin routes, Tailwind-based styling, and documented environment variable structure.
 
 ## Completed So Far
 - Initialized the application shell with Next.js, TypeScript, and App Router
@@ -30,8 +33,7 @@ The project has a working Next.js App Router scaffold with a shared layout, plac
 - Verified the current scaffold with lint and production build
 
 ## Current Limitations
-- No Supabase project connection yet
-- No database schema or seed data yet
+- Hosted Supabase project is not linked yet
 - No authentication yet
 - No booking API yet
 - No live package or booking data yet
@@ -41,7 +43,7 @@ The project has a working Next.js App Router scaffold with a shared layout, plac
 | Phase | Name | State |
 | --- | --- | --- |
 | 1 | Project Setup | Complete |
-| 2 | Supabase Setup and Database Schema | Next |
+| 2 | Supabase Setup and Database Schema | Complete |
 | 3 | Authentication and Admin Access | Pending |
 | 4 | Row Level Security and Safe Data Access | Pending |
 | 5 | Core Domain Types, Validation, and Utilities | Pending |
@@ -61,15 +63,23 @@ The project has a working Next.js App Router scaffold with a shared layout, plac
 | 19 | Deployment Preparation | Pending |
 | 20 | Final MVP Review | Pending |
 
-## Next Recommended Action
-Begin Phase 2 by connecting Supabase and creating the initial schema for:
-- `customers`
-- `menu_packages`
-- `bookings`
-- `availability_rules`
-- `blocked_dates`
+## Phase 2 Deliverables Completed
+- Supabase CLI project structure added under `supabase/`
+- Core schema migrations added for:
+  - `customers`
+  - `menu_packages`
+  - `bookings`
+  - `availability_rules`
+  - `blocked_dates`
+- Core indexes added for bookings and blocked dates
+- Seed data added for starter menu packages, weekday availability, and blocked dates
+- Minimal server-side Supabase helper added for later secure operations
+- README instructions added for local resets, migration push, and project linking
 
-Phase 2 should also include repeatable schema setup, useful indexes, and starter seed data for packages, weekday availability, and a few blocked dates.
+## Immediate Next Deliverables
+- Begin Phase 3 by implementing Supabase Auth for admin login
+- Protect `/admin` routes and future admin operations
+- Keep customer access unauthenticated
 
 ## Working Notes
 - Public booking submission must remain a request flow, not an instant confirmation flow.

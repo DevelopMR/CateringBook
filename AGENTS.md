@@ -45,6 +45,6 @@ CateringBook is a production-oriented MVP for a local lunch catering business. I
 - Keep secrets out of version control and use local environment files only
 
 ## Current Phase Discipline
-- Phase 1 is complete.
-- The next planned phase is Phase 2: Supabase setup and database schema.
-- Do not start application feature work beyond the confirmed phase boundary.
+- Phase 1 is complete and accepted.
+- Phase 2 is complete with CLI migrations and seed data committed in-repo.
+- The next planned phase is Phase 3: admin authentication and access protection.

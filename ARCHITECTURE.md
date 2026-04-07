@@ -63,6 +63,15 @@ Phase 1 is implemented with the following application shell:
   - `/admin/blocked-dates`
   - `/admin/packages`
 
+## Current Delivery Focus
+The current implemented data foundation now includes:
+- Supabase CLI project structure
+- versioned SQL migrations in `supabase/migrations`
+- starter seed data in `supabase/seed.sql`
+- a minimal server-side Supabase client helper for future secure operations
+
+The next architectural work should focus on admin authentication and route protection.
+
 ## Current Project Structure
 ```text
 app/

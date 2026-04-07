@@ -6,9 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0"
+    "lint": "eslint . --max-warnings=0",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "db:reset": "supabase db reset",
+    "db:push": "supabase db push",
+    "db:new-migration": "supabase migration new"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
     "next": "^16.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
@@ -21,12 +28,9 @@
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.2",
     "postcss": "^8.5.8",
+    "supabase": "^2.85.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
-  },
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
   },
   "repository": {
     "type": "git",

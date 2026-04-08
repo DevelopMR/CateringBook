@@ -7,8 +7,8 @@
 - Status date: 2026-04-08
 
 ## Current Phase
-### Step 6 in progress
-Phase 5 is complete and verified. Step 6 is now in progress with server-side admin guards on protected admin pages.
+### Step 7 in progress
+Step 6 is complete and verified. Step 7 is now in progress with `redirectTo` handling for successful admin login.
 
 ## Phase 1 Wrap-Up
 Phase 1 is complete and confirmed. The project has a working Next.js App Router scaffold with a shared layout, placeholder public and admin routes, Tailwind-based styling, and documented environment variable structure.
@@ -125,6 +125,15 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 - Added reusable server-side admin guard helper
 - Applied guard to current protected admin pages
 - Admin page auth no longer relies only on proxy redirects
+
+## Step 6 Completion Summary
+- Protected admin pages now enforce auth server-side
+- Admin routing has defense-in-depth beyond proxy redirects
+
+## Step 7 Progress
+- Login now reads `redirectTo` from `/admin/login`
+- Successful login returns users to the originally requested admin page
+- Fallback remains `/admin` when no redirect target is provided
 
 ## Immediate Next Deliverables
 - Extend protection to future admin-side operations and APIs

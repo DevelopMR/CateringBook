@@ -4,10 +4,17 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
-export function AdminLoginForm() {
+type AdminLoginFormProps = {
+  redirectTo?: string;
+};
+
+export function AdminLoginForm({ redirectTo }: AdminLoginFormProps) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+
+  const nextPath =
+    redirectTo && redirectTo.startsWith("/admin") ? redirectTo : "/admin";
 
   async function handleSubmit(formData: FormData) {
     const email = String(formData.get("email") ?? "").trim();
@@ -32,7 +39,7 @@ export function AdminLoginForm() {
     }
 
     startTransition(() => {
-      router.push("/admin");
+      router.push(nextPath);
       router.refresh();
     });
   }

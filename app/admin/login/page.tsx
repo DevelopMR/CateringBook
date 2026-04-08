@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { AdminLoginForm } from "@/components/admin/admin-login-form";
 
-export default function AdminLoginPage() {
+type AdminLoginPageProps = {
+  searchParams?: Promise<{
+    redirectTo?: string;
+  }>;
+};
+
+export default async function AdminLoginPage({ searchParams }: AdminLoginPageProps) {
+  const params = searchParams ? await searchParams : undefined;
+
   return (
     <section className="mx-auto max-w-4xl">
       <div className="grid gap-6 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-sm sm:grid-cols-[1.1fr_0.9fr] sm:p-10">
@@ -26,7 +34,7 @@ export default function AdminLoginPage() {
         </div>
 
         <div className="rounded-2xl border border-[var(--border)] bg-white/70 p-6">
-          <AdminLoginForm />
+          <AdminLoginForm redirectTo={params?.redirectTo} />
 
           <div className="mt-5 border-t border-[var(--border)] pt-5 text-sm text-[var(--muted)]">
             <p>Login now creates an admin session, but admin pages are not locked yet.</p>

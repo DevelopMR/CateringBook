@@ -81,6 +81,7 @@ The current auth foundation now also includes:
 - route protection for `/admin` pages in the request proxy layer
 - shared-header sign-out support for authenticated admins
 - server-side admin page guards for defense-in-depth
+- redirect restoration to the originally requested admin page after login
 
 The next architectural work should focus on protecting future admin-side operations and APIs beyond page routing.
 

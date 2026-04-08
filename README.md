@@ -8,6 +8,7 @@ Production-oriented MVP booking request app for a local lunch catering business.
 - Phase 3 Step 1 added: Supabase auth plumbing for browser, server, admin, and middleware session handling
 - Phase 3 Step 2 added: real `/admin/login` page UI, still non-functional until sign-in wiring is added
 - Phase 3 Step 3 added: `/admin/login` now creates a real Supabase admin session
+- Phase 4 added: `/admin` routes are protected and redirect signed-out users to `/admin/login`
 
 ## Stack
 - Next.js App Router
@@ -81,6 +82,20 @@ What this step still does not do:
 - no admin route protection yet
 - no forced redirect away from admin pages for signed-out users yet
 - no logout flow yet
+
+## Phase 4 Admin Route Protection
+Phase 4 protects the admin pages while keeping the public site open.
+
+What this step does:
+- redirects signed-out visitors from `/admin` routes to `/admin/login`
+- redirects signed-in admins away from `/admin/login` to `/admin`
+- keeps public routes open without authentication
+- centralizes route checks in the request proxy flow
+
+What this step still does not do:
+- no logout flow yet
+- no role-based admin authorization yet
+- no API-level admin protection beyond page routing yet
 
 ## Supabase CLI Workflow
 The repo uses a lightweight in-repo Supabase workflow:

@@ -78,8 +78,9 @@ The current auth foundation now also includes:
 - middleware-based session refresh support
 - a real admin login page UI shell
 - a live login submission flow backed by Supabase Auth
+- route protection for `/admin` pages in the request proxy layer
 
-The next architectural work should focus on the login UI, admin session flow, and route protection.
+The next architectural work should focus on logout behavior and protecting future admin-side operations beyond page routing.
 
 ## Current Project Structure
 ```text

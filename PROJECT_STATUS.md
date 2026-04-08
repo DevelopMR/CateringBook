@@ -7,8 +7,8 @@
 - Status date: 2026-04-08
 
 ## Current Phase
-### Phase 3 in progress
-Phase 2 is complete and verified. Phase 3 has now started with Step 1: Supabase auth plumbing for browser, server, admin, and middleware session handling.
+### Phase 4 in progress
+Phase 3 is complete and verified. Phase 4 is now in progress with admin route protection and redirect handling.
 
 ## Phase 1 Wrap-Up
 Phase 1 is complete and confirmed. The project has a working Next.js App Router scaffold with a shared layout, placeholder public and admin routes, Tailwind-based styling, and documented environment variable structure.
@@ -44,7 +44,7 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 | --- | --- | --- |
 | 1 | Project Setup | Complete |
 | 2 | Supabase Setup and Database Schema | Complete |
-| 3 | Authentication and Admin Access | In Progress |
+| 3 | Authentication and Admin Access | Complete |
 | 4 | Row Level Security and Safe Data Access | Pending |
 | 5 | Core Domain Types, Validation, and Utilities | Pending |
 | 6 | Public Marketing Pages | Pending |
@@ -95,9 +95,20 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 - Successful sign-in redirects to `/admin`
 - Failed sign-in shows inline auth errors
 
+## Phase 3 Completion Summary
+- Auth plumbing is complete
+- Login UI is complete
+- Admin session creation is complete
+- Phase 3 is ready to hand off to protected admin routing
+
+## Phase 4 Progress
+- Signed-out users are redirected from `/admin` routes to `/admin/login`
+- Signed-in admins are redirected away from `/admin/login` to `/admin`
+- Public routes remain open without authentication
+
 ## Immediate Next Deliverables
-- Step 4: protect `/admin` routes and future admin operations
 - Step 5: add a clean admin logout flow
+- Extend protection to future admin-side operations and APIs
 - Keep customer access unauthenticated throughout the MVP
 
 ## Working Notes

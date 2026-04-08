@@ -5,13 +5,8 @@ Production-oriented MVP booking request app for a local lunch catering business.
 ## Current Status
 - Phase 1 complete: app scaffold, placeholder routes, shared layout
 - Phase 2 implemented and locally verified: Supabase CLI setup, schema migrations, seed data, and setup workflow
-- Phase 3 Step 1 added: Supabase auth plumbing for browser, server, admin, and middleware session handling
-- Phase 3 Step 2 added: real `/admin/login` page UI, still non-functional until sign-in wiring is added
-- Phase 3 Step 3 added: `/admin/login` now creates a real Supabase admin session
-- Phase 4 added: `/admin` routes are protected and redirect signed-out users to `/admin/login`
-- Phase 5 added: authenticated admins can sign out cleanly from the shared header
-- Step 6 added: protected admin pages now also enforce auth on the server side
-- Step 7 added: successful login now respects the `redirectTo` query parameter for protected admin routes
+- Phase 3 complete: Supabase admin auth, protected admin routes, logout, server-side page guards, and post-login redirect restoration are implemented and verified
+- Next up: Phase 4 Row Level Security and safe data access
 
 ## Stack
 - Next.js App Router
@@ -37,106 +32,40 @@ Notes:
 - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` are used by the app.
 - `SUPABASE_ACCESS_TOKEN` and `SUPABASE_PROJECT_ID` are used by the Supabase CLI when linking and pushing to a hosted project.
 
-## Phase 3 Auth Plumbing
-Step 1 of Phase 3 adds the foundational Supabase auth wiring without protecting routes yet.
+## Phase 3 Authentication Summary
+Phase 3 is complete and covers the full admin auth slice required by the build order.
 
-Current auth plumbing files:
+Key auth files:
 - `lib/supabase/browser.ts`
 - `lib/supabase/server.ts`
 - `lib/supabase/admin.ts`
 - `lib/supabase/middleware.ts`
 - `proxy.ts`
 
-What this step does:
-- creates a browser Supabase client for future login UI
-- creates a request-aware server client for future authenticated server reads
-- keeps a separate admin/service-role client for secure backend operations
-- refreshes auth cookies in the Next.js request proxy so sessions are available consistently
+What Phase 3 now does:
+- creates authenticated admin sessions with Supabase Auth
+- restricts `/admin` routes to authenticated admins only
+- redirects signed-out users to `/admin/login`
+- redirects signed-in admins away from `/admin/login`
+- signs admins out cleanly from the shared header
+- enforces auth inside protected admin pages server-side
+- restores the originally requested admin route after login via `redirectTo`
 
-What this step does not do yet:
-- no login form
-- no logout flow
-- no admin route protection
-- no redirect behavior
-
-## Phase 3 Login UI
-Step 2 replaces the `/admin/login` placeholder with the real admin sign-in screen layout.
-
-What this step does:
-- adds email and password fields
-- adds business-owner-only messaging
-- gives the route a realistic admin login presentation for testing and review
-
-What this step still does not do:
-- no actual sign-in submission yet
-- no session creation yet
-- no protected-route redirects yet
-
-## Phase 3 Session Handling
-Step 3 wires the login form to Supabase Auth.
-
-What this step does:
-- submits email and password to Supabase Auth
-- creates a real admin session on successful sign-in
-- shows auth error messages on failed sign-in
-- redirects successful sign-in to `/admin`
-
-What this step still does not do:
-- no admin route protection yet
-- no forced redirect away from admin pages for signed-out users yet
-- no logout flow yet
-
-## Phase 4 Admin Route Protection
-Phase 4 protects the admin pages while keeping the public site open.
-
-What this step does:
-- redirects signed-out visitors from `/admin` routes to `/admin/login`
-- redirects signed-in admins away from `/admin/login` to `/admin`
-- keeps public routes open without authentication
-- centralizes route checks in the request proxy flow
-
-What this step still does not do:
-- no logout flow yet
+What Phase 3 intentionally does not do:
+- no customer login
 - no role-based admin authorization yet
-- no API-level admin protection beyond page routing yet
+- no RLS policies yet
+- no booking creation API yet
+- no admin data API layer yet
 
-## Phase 5 Logout
-Phase 5 adds a clean sign-out flow for authenticated admins.
+## Phase 4 Next Focus
+Phase 4 is the next build-order phase: Row Level Security and safe data access.
 
-What this step does:
-- shows a `Sign Out` control when an admin session exists
-- signs out through Supabase Auth
-- redirects the user back to `/admin/login`
-- refreshes the app state so admin-only access is removed immediately
-
-What this step still does not do:
-- no role-based admin authorization yet
-- no API-level admin protection beyond page routing yet
-
-## Step 6 Server-Side Admin Guard
-Step 6 adds a reusable server-side admin guard for protected admin pages.
-
-What this step does:
-- adds a shared `requireAdminUser()` helper
-- enforces auth inside protected admin pages even if the request proxy is bypassed
-- gives current admin routes defense-in-depth before later admin APIs are built
-
-What this step still does not do:
-- no role-based admin authorization yet
-- no API route guard layer yet
-
-## Step 7 Redirect Restoration
-Step 7 restores the original protected admin destination after login.
-
-What this step does:
-- reads the `redirectTo` query parameter from `/admin/login`
-- redirects successful login back to the originally requested admin page
-- falls back to `/admin` when no redirect target is present
-- limits redirects to internal `/admin` paths only
-
-What this step still does not do:
-- no role-based admin authorization yet
-- no API route guard layer yet
+Objectives:
+- add RLS policies for the relevant tables
+- keep booking and admin operational data private from public users
+- define safe server-side patterns for future public booking submission and admin operations
+- ensure service-role credentials remain server-side only
 
 ## Supabase CLI Workflow
 The repo uses a lightweight in-repo Supabase workflow:

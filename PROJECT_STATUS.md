@@ -7,8 +7,8 @@
 - Status date: 2026-04-08
 
 ## Current Phase
-### Step 7 in progress
-Step 6 is complete and verified. Step 7 is now in progress with `redirectTo` handling for successful admin login.
+### Phase 4 next
+Phase 3 is complete and verified. The next planned build-order phase is Phase 4: Row Level Security and safe data access.
 
 ## Phase 1 Wrap-Up
 Phase 1 is complete and confirmed. The project has a working Next.js App Router scaffold with a shared layout, placeholder public and admin routes, Tailwind-based styling, and documented environment variable structure.
@@ -34,7 +34,9 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 
 ## Current Limitations
 - Hosted Supabase project is not linked yet
-- No authentication yet
+- Row Level Security policies are not implemented yet
+- Public booking writes are not routed through a secure server-side booking flow yet
+- Admin data APIs and server actions are not built yet
 - No booking API yet
 - No live package or booking data yet
 - No availability logic yet
@@ -45,7 +47,7 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 | 1 | Project Setup | Complete |
 | 2 | Supabase Setup and Database Schema | Complete |
 | 3 | Authentication and Admin Access | Complete |
-| 4 | Row Level Security and Safe Data Access | Complete |
+| 4 | Row Level Security and Safe Data Access | Next |
 | 5 | Core Domain Types, Validation, and Utilities | Pending |
 | 6 | Public Marketing Pages | Pending |
 | 7 | Booking Form UI | Pending |
@@ -99,48 +101,37 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 - Auth plumbing is complete
 - Login UI is complete
 - Admin session creation is complete
-- Phase 3 is ready to hand off to protected admin routing
+- Admin route protection is complete
+- Logout flow is complete
+- Protected admin pages now enforce auth server-side
+- Login now restores the originally requested protected admin route
+- Signed-out and signed-in admin route behavior has been verified page by page
 
-## Phase 4 Progress
+## Phase 4 Objectives
+- Configure Row Level Security on the operational tables
+- Prevent public users from reading booking and admin data directly
+- Establish safe admin-only reads and writes through authenticated server-side code
+- Keep service-role credentials server-side only
+- Prepare the secure data access pattern needed before booking creation and admin data APIs
+
+## Phase 3 Auth Verification Summary
+- Valid admin login creates a session and reaches `/admin`
+- Invalid credentials fail cleanly
 - Signed-out users are redirected from `/admin` routes to `/admin/login`
 - Signed-in admins are redirected away from `/admin/login` to `/admin`
 - Public routes remain open without authentication
-
-## Phase 4 Completion Summary
-- Admin route protection is in place
-- Public routes remain open
-- Redirect behavior is working for signed-in and signed-out users
-
-## Phase 5 Progress
-- Authenticated admins can now sign out from the shared header
-- Sign-out redirects back to `/admin/login`
-- Header navigation updates based on session state
-
-## Phase 5 Completion Summary
 - Authenticated admins can sign out cleanly
-- Session state updates correctly in the shared header
-- Logout flow returns the user to the admin login page
-
-## Step 6 Progress
-- Added reusable server-side admin guard helper
-- Applied guard to current protected admin pages
-- Admin page auth no longer relies only on proxy redirects
-
-## Step 6 Completion Summary
-- Protected admin pages now enforce auth server-side
-- Admin routing has defense-in-depth beyond proxy redirects
-
-## Step 7 Progress
-- Login now reads `redirectTo` from `/admin/login`
-- Successful login returns users to the originally requested admin page
-- Fallback remains `/admin` when no redirect target is provided
+- Protected admin pages enforce auth at both the routing layer and the server-rendered page layer
+- `redirectTo` is preserved and restores the intended admin page after login
 
 ## Immediate Next Deliverables
-- Extend protection to future admin-side operations and APIs
-- Continue into the next domain slice after auth is fully accepted
+- Add RLS policies for the core tables
+- Define which tables are readable publicly, if any, and keep bookings private
+- Prepare secure server-side Supabase access patterns for future booking creation and admin operations
 - Keep customer access unauthenticated throughout the MVP
 
 ## Working Notes
 - Public booking submission must remain a request flow, not an instant confirmation flow.
 - Admin access should stay restricted to authenticated business users only.
+- Public data access should stay minimal and intentional once RLS is enabled.
 - All future work should continue to follow the original blueprint, build order, and master prompt without scope drift.

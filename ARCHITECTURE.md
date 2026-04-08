@@ -83,7 +83,11 @@ The current auth foundation now also includes:
 - server-side admin page guards for defense-in-depth
 - redirect restoration to the originally requested admin page after login
 
-The next architectural work should focus on protecting future admin-side operations and APIs beyond page routing.
+The next architectural work should focus on Phase 4 concerns:
+- adding Row Level Security policies for the core tables
+- keeping public database access minimal
+- defining safe server-side access patterns for future booking creation and admin operations
+- ensuring service-role usage stays server-side only
 
 ## Current Project Structure
 ```text

@@ -1,6 +1,9 @@
 import { PlaceholderPage } from "@/components/placeholder-page";
+import { requireAdminUser } from "@/lib/supabase/require-admin-user";
 
-export default function AdminPackagesPage() {
+export default async function AdminPackagesPage() {
+  await requireAdminUser();
+
   return (
     <PlaceholderPage
       eyebrow="Admin"

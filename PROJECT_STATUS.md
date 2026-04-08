@@ -7,8 +7,8 @@
 - Status date: 2026-04-08
 
 ## Current Phase
-### Phase 5 in progress
-Phase 4 is complete and verified. Phase 5 is now in progress with admin logout behavior.
+### Step 6 in progress
+Phase 5 is complete and verified. Step 6 is now in progress with server-side admin guards on protected admin pages.
 
 ## Phase 1 Wrap-Up
 Phase 1 is complete and confirmed. The project has a working Next.js App Router scaffold with a shared layout, placeholder public and admin routes, Tailwind-based styling, and documented environment variable structure.
@@ -115,6 +115,16 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 - Authenticated admins can now sign out from the shared header
 - Sign-out redirects back to `/admin/login`
 - Header navigation updates based on session state
+
+## Phase 5 Completion Summary
+- Authenticated admins can sign out cleanly
+- Session state updates correctly in the shared header
+- Logout flow returns the user to the admin login page
+
+## Step 6 Progress
+- Added reusable server-side admin guard helper
+- Applied guard to current protected admin pages
+- Admin page auth no longer relies only on proxy redirects
 
 ## Immediate Next Deliverables
 - Extend protection to future admin-side operations and APIs

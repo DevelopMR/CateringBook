@@ -10,6 +10,7 @@ Production-oriented MVP booking request app for a local lunch catering business.
 - Phase 3 Step 3 added: `/admin/login` now creates a real Supabase admin session
 - Phase 4 added: `/admin` routes are protected and redirect signed-out users to `/admin/login`
 - Phase 5 added: authenticated admins can sign out cleanly from the shared header
+- Step 6 added: protected admin pages now also enforce auth on the server side
 
 ## Stack
 - Next.js App Router
@@ -110,6 +111,18 @@ What this step does:
 What this step still does not do:
 - no role-based admin authorization yet
 - no API-level admin protection beyond page routing yet
+
+## Step 6 Server-Side Admin Guard
+Step 6 adds a reusable server-side admin guard for protected admin pages.
+
+What this step does:
+- adds a shared `requireAdminUser()` helper
+- enforces auth inside protected admin pages even if the request proxy is bypassed
+- gives current admin routes defense-in-depth before later admin APIs are built
+
+What this step still does not do:
+- no role-based admin authorization yet
+- no API route guard layer yet
 
 ## Supabase CLI Workflow
 The repo uses a lightweight in-repo Supabase workflow:

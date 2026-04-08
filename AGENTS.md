@@ -49,11 +49,13 @@ CateringBook is a production-oriented MVP for a local lunch catering business. I
 - Phase 2 is complete and locally verified with CLI migrations and seed data committed in-repo.
 - Phase 3 is complete.
 - Phase 4 is complete.
-- Phase 5 is in progress.
+- Phase 5 is complete.
+- Step 6 is in progress.
 - Step 1 auth plumbing is in place.
 - Step 2 login UI is in place.
 - Step 3 login session creation is in place.
 - Admin pages are now protected at the routing layer.
-- Admin sign-out is now being added as the current auth slice.
+- Admin sign-out is complete.
+- Protected admin pages now also enforce auth server-side.
 - Build and verify the remaining auth slices one step at a time.
 - Use the README database admin guide for local schema operations and migration workflow.

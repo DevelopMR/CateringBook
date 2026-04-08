@@ -1,4 +1,5 @@
 import { PlaceholderPage } from "@/components/placeholder-page";
+import { requireAdminUser } from "@/lib/supabase/require-admin-user";
 
 type BookingDetailPageProps = {
   params: Promise<{
@@ -9,6 +10,8 @@ type BookingDetailPageProps = {
 export default async function AdminBookingDetailPage({
   params,
 }: BookingDetailPageProps) {
+  await requireAdminUser();
+
   const { id } = await params;
 
   return (

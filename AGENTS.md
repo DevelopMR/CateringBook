@@ -46,5 +46,6 @@ CateringBook is a production-oriented MVP for a local lunch catering business. I
 
 ## Current Phase Discipline
 - Phase 1 is complete and accepted.
-- Phase 2 is complete with CLI migrations and seed data committed in-repo.
+- Phase 2 is complete and locally verified with CLI migrations and seed data committed in-repo.
 - The next planned phase is Phase 3: admin authentication and access protection.
+- Use the README database admin guide for local schema operations and migration workflow.

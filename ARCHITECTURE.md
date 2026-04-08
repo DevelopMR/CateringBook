@@ -69,6 +69,7 @@ The current implemented data foundation now includes:
 - versioned SQL migrations in `supabase/migrations`
 - starter seed data in `supabase/seed.sql`
 - a minimal server-side Supabase client helper for future secure operations
+- verified local database services and seeded records
 
 The next architectural work should focus on admin authentication and route protection.
 

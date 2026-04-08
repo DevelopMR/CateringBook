@@ -4,7 +4,7 @@ Production-oriented MVP booking request app for a local lunch catering business.
 
 ## Current Status
 - Phase 1 complete: app scaffold, placeholder routes, shared layout
-- Phase 2 implemented in-repo: Supabase CLI setup, schema migrations, seed data, and setup workflow
+- Phase 2 implemented and locally verified: Supabase CLI setup, schema migrations, seed data, and setup workflow
 
 ## Stack
 - Next.js App Router
@@ -86,6 +86,92 @@ npm run db:push
 ```
 
 If you need starter data in the hosted database, run the seed file using the SQL editor or reset a linked local environment first and then promote the migrated schema.
+
+## Database Admin Guide
+This project uses Supabase CLI migrations as the source of truth for schema changes. Avoid making schema-only changes in the dashboard without capturing them back into the repo.
+
+### Core admin files
+- [supabase/config.toml](C:/Dev/CateringBook/supabase/config.toml)
+- [supabase/migrations/20260407075449_create_core_schema.sql](C:/Dev/CateringBook/supabase/migrations/20260407075449_create_core_schema.sql)
+- [supabase/migrations/20260407075450_add_core_indexes.sql](C:/Dev/CateringBook/supabase/migrations/20260407075450_add_core_indexes.sql)
+- [supabase/seed.sql](C:/Dev/CateringBook/supabase/seed.sql)
+
+### Local database admin tasks
+Start local services:
+
+```bash
+npm run supabase:start
+```
+
+Check service health:
+
+```bash
+npm run supabase:status
+```
+
+Reset the local database and reload migrations and seeds:
+
+```bash
+npm run db:reset
+```
+
+Stop local services:
+
+```bash
+npm run supabase:stop
+```
+
+### Local verification checks
+After `npm run db:reset`, verify:
+- `customers`, `menu_packages`, `bookings`, `availability_rules`, and `blocked_dates` exist
+- `menu_packages` has 3 seeded rows
+- `availability_rules` has 5 weekday rows
+- `blocked_dates` has 3 seeded rows
+
+Supabase Studio local URL:
+- `http://127.0.0.1:54323`
+
+Local database connection:
+- `postgresql://postgres:postgres@127.0.0.1:54322/postgres`
+
+### Making schema changes
+Create a new migration:
+
+```bash
+npm run db:new-migration YOUR_MIGRATION_NAME
+```
+
+Then:
+1. Edit the generated SQL file in `supabase/migrations/`
+2. Run `npm run db:reset`
+3. Verify the schema and seed state locally
+4. Commit the migration file to git
+
+### Pushing schema changes to hosted Supabase
+1. Log in:
+
+```bash
+npx supabase login
+```
+
+2. Link the repo to the hosted project:
+
+```bash
+npx supabase link --project-ref YOUR_PROJECT_ID
+```
+
+3. Push migrations:
+
+```bash
+npm run db:push
+```
+
+### Practical admin rules
+- Treat the migration files as the canonical schema history.
+- Keep seed data lightweight and focused on MVP starter records.
+- Prefer new migrations over editing old committed migrations once they are shared.
+- Do not put secrets in migration or seed files.
+- Use the dashboard for inspection and operations, not as the only record of structural changes.
 
 ## Phase 2 Database Assets
 ### Core tables

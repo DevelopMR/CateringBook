@@ -89,9 +89,10 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 - Request-aware server auth client added
 - Service-role admin client separated from auth session clients
 - Middleware session refresh added without route protection yet
+- Step 2 complete: `/admin/login` now uses a real login screen layout
+- Login UI is ready for sign-in wiring in the next slice
 
 ## Immediate Next Deliverables
-- Step 2: build the real `/admin/login` page
 - Step 3: add admin session handling to the login flow
 - Step 4: protect `/admin` routes and future admin operations
 - Keep customer access unauthenticated throughout the MVP

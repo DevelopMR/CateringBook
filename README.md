@@ -6,6 +6,7 @@ Production-oriented MVP booking request app for a local lunch catering business.
 - Phase 1 complete: app scaffold, placeholder routes, shared layout
 - Phase 2 implemented and locally verified: Supabase CLI setup, schema migrations, seed data, and setup workflow
 - Phase 3 Step 1 added: Supabase auth plumbing for browser, server, admin, and middleware session handling
+- Phase 3 Step 2 added: real `/admin/login` page UI, still non-functional until sign-in wiring is added
 
 ## Stack
 - Next.js App Router
@@ -52,6 +53,19 @@ What this step does not do yet:
 - no logout flow
 - no admin route protection
 - no redirect behavior
+
+## Phase 3 Login UI
+Step 2 replaces the `/admin/login` placeholder with the real admin sign-in screen layout.
+
+What this step does:
+- adds email and password fields
+- adds business-owner-only messaging
+- gives the route a realistic admin login presentation for testing and review
+
+What this step still does not do:
+- no actual sign-in submission yet
+- no session creation yet
+- no protected-route redirects yet
 
 ## Supabase CLI Workflow
 The repo uses a lightweight in-repo Supabase workflow:

@@ -76,6 +76,7 @@ The current auth foundation now also includes:
 - a request-aware server auth client
 - a dedicated admin/service-role client
 - middleware-based session refresh support
+- a real admin login page UI shell
 
 The next architectural work should focus on the login UI, admin session flow, and route protection.
 

@@ -91,10 +91,13 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 - Middleware session refresh added without route protection yet
 - Step 2 complete: `/admin/login` now uses a real login screen layout
 - Login UI is ready for sign-in wiring in the next slice
+- Step 3 complete: `/admin/login` now creates a Supabase auth session
+- Successful sign-in redirects to `/admin`
+- Failed sign-in shows inline auth errors
 
 ## Immediate Next Deliverables
-- Step 3: add admin session handling to the login flow
 - Step 4: protect `/admin` routes and future admin operations
+- Step 5: add a clean admin logout flow
 - Keep customer access unauthenticated throughout the MVP
 
 ## Working Notes

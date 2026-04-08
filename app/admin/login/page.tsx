@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdminLoginForm } from "@/components/admin/admin-login-form";
 
 export default function AdminLoginPage() {
   return (
@@ -19,52 +20,16 @@ export default function AdminLoginPage() {
           </div>
 
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--accent-soft)] p-5 text-sm leading-6 text-[var(--foreground)]">
-            Step 2 only adds the login screen. Authentication is not connected yet, so
-            this form is intentionally non-functional until the next step.
+            Step 3 connects this form to Supabase Auth. Admin route protection is still
+            a separate step and will be added next.
           </div>
         </div>
 
         <div className="rounded-2xl border border-[var(--border)] bg-white/70 p-6">
-          <form className="space-y-5">
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-[var(--foreground)]">
-                Admin email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="owner@example.com"
-                className="w-full rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-base outline-none transition placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label
-                htmlFor="password"
-                className="text-sm font-medium text-[var(--foreground)]"
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Enter password"
-                className="w-full rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-base outline-none transition placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
-              />
-            </div>
-
-            <button
-              type="button"
-              className="w-full rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-white opacity-70"
-            >
-              Sign In
-            </button>
-          </form>
+          <AdminLoginForm />
 
           <div className="mt-5 border-t border-[var(--border)] pt-5 text-sm text-[var(--muted)]">
-            <p>Authentication wiring will be added in the next step.</p>
+            <p>Login now creates an admin session, but admin pages are not locked yet.</p>
             <Link href="/" className="mt-3 inline-flex text-[var(--accent)] hover:underline">
               Return to public site
             </Link>

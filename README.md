@@ -5,6 +5,7 @@ Production-oriented MVP booking request app for a local lunch catering business.
 ## Current Status
 - Phase 1 complete: app scaffold, placeholder routes, shared layout
 - Phase 2 implemented and locally verified: Supabase CLI setup, schema migrations, seed data, and setup workflow
+- Phase 3 Step 1 added: Supabase auth plumbing for browser, server, admin, and middleware session handling
 
 ## Stack
 - Next.js App Router
@@ -29,6 +30,28 @@ EMAIL_PROVIDER_API_KEY=
 Notes:
 - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` are used by the app.
 - `SUPABASE_ACCESS_TOKEN` and `SUPABASE_PROJECT_ID` are used by the Supabase CLI when linking and pushing to a hosted project.
+
+## Phase 3 Auth Plumbing
+Step 1 of Phase 3 adds the foundational Supabase auth wiring without protecting routes yet.
+
+Current auth plumbing files:
+- `lib/supabase/browser.ts`
+- `lib/supabase/server.ts`
+- `lib/supabase/admin.ts`
+- `lib/supabase/middleware.ts`
+- `proxy.ts`
+
+What this step does:
+- creates a browser Supabase client for future login UI
+- creates a request-aware server client for future authenticated server reads
+- keeps a separate admin/service-role client for secure backend operations
+- refreshes auth cookies in the Next.js request proxy so sessions are available consistently
+
+What this step does not do yet:
+- no login form
+- no logout flow
+- no admin route protection
+- no redirect behavior
 
 ## Supabase CLI Workflow
 The repo uses a lightweight in-repo Supabase workflow:

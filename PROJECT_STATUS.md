@@ -7,8 +7,8 @@
 - Status date: 2026-04-08
 
 ## Current Phase
-### Phase 2 complete
-Phase 1 has been reviewed and accepted, and the Phase 2 data foundation is now in place in-repo with Supabase CLI setup, schema migrations, seed data, setup documentation, and local verification.
+### Phase 3 in progress
+Phase 2 is complete and verified. Phase 3 has now started with Step 1: Supabase auth plumbing for browser, server, admin, and middleware session handling.
 
 ## Phase 1 Wrap-Up
 Phase 1 is complete and confirmed. The project has a working Next.js App Router scaffold with a shared layout, placeholder public and admin routes, Tailwind-based styling, and documented environment variable structure.
@@ -44,7 +44,7 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 | --- | --- | --- |
 | 1 | Project Setup | Complete |
 | 2 | Supabase Setup and Database Schema | Complete |
-| 3 | Authentication and Admin Access | Pending |
+| 3 | Authentication and Admin Access | In Progress |
 | 4 | Row Level Security and Safe Data Access | Pending |
 | 5 | Core Domain Types, Validation, and Utilities | Pending |
 | 6 | Public Marketing Pages | Pending |
@@ -83,11 +83,18 @@ Phase 1 is complete and confirmed. The project has a working Next.js App Router 
 - Seed counts are correct for packages, availability rules, and blocked dates
 - Project is ready to move into admin authentication planning
 
+## Phase 3 Progress
+- Step 1 complete: auth plumbing added
+- Browser auth client added for future login UI
+- Request-aware server auth client added
+- Service-role admin client separated from auth session clients
+- Middleware session refresh added without route protection yet
+
 ## Immediate Next Deliverables
-- Discuss and finalize Phase 3 implementation details for Supabase Auth
-- Begin Phase 3 by implementing Supabase Auth for admin login
-- Protect `/admin` routes and future admin operations
-- Keep customer access unauthenticated
+- Step 2: build the real `/admin/login` page
+- Step 3: add admin session handling to the login flow
+- Step 4: protect `/admin` routes and future admin operations
+- Keep customer access unauthenticated throughout the MVP
 
 ## Working Notes
 - Public booking submission must remain a request flow, not an instant confirmation flow.

@@ -71,7 +71,13 @@ The current implemented data foundation now includes:
 - a minimal server-side Supabase client helper for future secure operations
 - verified local database services and seeded records
 
-The next architectural work should focus on admin authentication and route protection.
+The current auth foundation now also includes:
+- a browser auth client
+- a request-aware server auth client
+- a dedicated admin/service-role client
+- middleware-based session refresh support
+
+The next architectural work should focus on the login UI, admin session flow, and route protection.
 
 ## Current Project Structure
 ```text

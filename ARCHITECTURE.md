@@ -79,8 +79,9 @@ The current auth foundation now also includes:
 - a real admin login page UI shell
 - a live login submission flow backed by Supabase Auth
 - route protection for `/admin` pages in the request proxy layer
+- shared-header sign-out support for authenticated admins
 
-The next architectural work should focus on logout behavior and protecting future admin-side operations beyond page routing.
+The next architectural work should focus on protecting future admin-side operations beyond page routing.
 
 ## Current Project Structure
 ```text

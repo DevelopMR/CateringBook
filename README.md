@@ -9,6 +9,7 @@ Production-oriented MVP booking request app for a local lunch catering business.
 - Phase 3 Step 2 added: real `/admin/login` page UI, still non-functional until sign-in wiring is added
 - Phase 3 Step 3 added: `/admin/login` now creates a real Supabase admin session
 - Phase 4 added: `/admin` routes are protected and redirect signed-out users to `/admin/login`
+- Phase 5 added: authenticated admins can sign out cleanly from the shared header
 
 ## Stack
 - Next.js App Router
@@ -94,6 +95,19 @@ What this step does:
 
 What this step still does not do:
 - no logout flow yet
+- no role-based admin authorization yet
+- no API-level admin protection beyond page routing yet
+
+## Phase 5 Logout
+Phase 5 adds a clean sign-out flow for authenticated admins.
+
+What this step does:
+- shows a `Sign Out` control when an admin session exists
+- signs out through Supabase Auth
+- redirects the user back to `/admin/login`
+- refreshes the app state so admin-only access is removed immediately
+
+What this step still does not do:
 - no role-based admin authorization yet
 - no API-level admin protection beyond page routing yet
 
